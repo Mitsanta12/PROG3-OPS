@@ -1,0 +1,23 @@
+AwsTemplateFormationVersion: 2010-09-09
+Resources:
+  MyS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: STD21071
+      AccessControl: PublicRead 
+      VersioningConfiguration:
+        Status: Enabled
+
+  MyBucketParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/my-stack-STD21071/s3-bucket-name"
+      Type: "String"
+      Value: Ref MyS3Bucket
+
+  MyBucketARNParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "/my-stack-STD21071/s3-bucket-arn"
+      Type: "String"
+      Value: GetAtt MyS3Bucket.Arn
