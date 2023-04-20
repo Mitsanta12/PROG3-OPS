@@ -13,11 +13,11 @@ Resources:
     Properties:
       Name: "/my-stack-STD21071/s3-bucket-name"
       Type: "String"
-      Value: Ref MyS3Bucket
+      Value: !Ref MyS3Bucket
 
   MyBucketARNParameter:
     Type: "AWS::SSM::Parameter"
     Properties:
       Name: "/my-stack-STD21071/s3-bucket-arn"
       Type: "String"
-      Value: GetAtt MyS3Bucket.Arn
+      Value: !GetAtt MyS3Bucket.Arn
